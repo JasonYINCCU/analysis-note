@@ -1,0 +1,245 @@
+:root {
+  --bg-color: #fafafa;
+  --surface-color: #ffffff;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --border-color: #e5e7eb;
+  --primary: #1e3a8a;
+  --def-border: #2563eb;
+  --def-bg: #eff6ff;
+  --thm-border: #7c3aed;
+  --thm-bg: #f5f3ff;
+  --ex-border: #059669;
+  --ex-bg: #ecfdf5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.75;
+}
+
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.site-header {
+  background: var(--surface-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 16px 0;
+}
+
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.site-header nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.site-header nav a:hover {
+  color: var(--primary);
+}
+
+.site-footer {
+  margin-top: 64px;
+  padding: 24px 0;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.hero {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 32px;
+  margin-top: 32px;
+}
+
+.hero h1 {
+  margin: 0 0 12px 0;
+  font-size: 1.85rem;
+  color: var(--primary);
+}
+
+.hero p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.section-title {
+  margin: 36px 0 16px 0;
+  font-size: 1.25rem;
+}
+
+.lecture-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.lecture-card {
+  display: block;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 20px 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.lecture-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+}
+
+.lecture-card .chapter-tag {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+}
+
+.lecture-card h3 {
+  margin: 4px 0 6px 0;
+  font-size: 1.15rem;
+}
+
+.lecture-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.lecture-content {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 36px;
+  margin-top: 32px;
+}
+
+.lecture-meta {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.lecture-content h1 {
+  margin: 6px 0 10px 0;
+  font-size: 1.8rem;
+}
+
+.lecture-summary {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 24px 0;
+}
+
+.math-box {
+  border-left: 4px solid var(--border-color);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 24px 0;
+}
+
+.math-box .box-title {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.math-box.definition {
+  border-left-color: var(--def-border);
+  background-color: var(--def-bg);
+}
+
+.math-box.definition .box-title {
+  color: var(--def-border);
+}
+
+.math-box.theorem {
+  border-left-color: var(--thm-border);
+  background-color: var(--thm-bg);
+}
+
+.math-box.theorem .box-title {
+  color: var(--thm-border);
+}
+
+.math-box.example {
+  border-left-color: var(--ex-border);
+  background-color: var(--ex-bg);
+}
+
+.math-box.example .box-title {
+  color: var(--ex-border);
+}
+
+.proof-box {
+  padding: 12px 18px;
+  margin: -12px 0 24px 0;
+  border-left: 2px dashed #cbd5e1;
+  color: #374151;
+}
+
+.proof-label {
+  font-style: italic;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.proof-box::after {
+  content: "■";
+  display: block;
+  text-align: right;
+  color: var(--thm-border);
+  font-size: 0.9rem;
+}
+
+.lecture-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.95rem;
+}
+
+.lecture-nav a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.lecture-nav .disabled {
+  color: #9ca3af;
+}
