@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제1강. 실수의 완비성 공리와 상한·하한 | 학부 해석학 강의 노트</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false}
+      ]
+    });"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="brand">Real Analysis Notes</a>
+      <nav><a href="../index.html">전체 목차</a></nav>
+    </div>
+  </header>
+
+  <main class="container lecture-content">
+    <div class="lecture-meta">Chapter 01 · Real Number System</div>
+    <h1>제1강. 실수의 완비성 공리와 상한·하한</h1>
+    <p class="lecture-summary">유리수 집합 $\mathbb{Q}$와 실수 집합 $\mathbb{R}$을 결정적으로 구분 짓는 '완비성 공리(Completeness Axiom)'를 이해하고, 상한의 $\varepsilon$-특성화를 증명합니다.</p>
+    <hr>
+
+    <h2>1. 유계 집합과 상한(Supremum)</h2>
+    <p>해석학에서 극한과 연속성을 엄밀하게 다루기 위해서는 실수 직선에 '빈틈(gap)'이 없다는 성질이 필요합니다. 이를 위해 먼저 집합의 상계와 상한을 정의합니다.</p>
+
+    <div class="math-box definition">
+      <div class="box-title">정의 1.1 (상계와 상한)</div>
+      공집합이 아닌 실수의 부분집합 $S \subset \mathbb{R}$에 대하여:
+      <ol>
+        <li>모든 $x \in S$에 대하여 $x \le M$을 만족하는 실수 $M \in \mathbb{R}$이 존재하면, $S$는 <strong>위로 유계(bounded above)</strong>라 하고 $M$을 $S$의 <strong>상계(upper bound)</strong>라 한다.</li>
+        <li>실수 $u \in \mathbb{R}$가 다음 두 조건을 만족하면 $u$를 $S$의 <strong>상한(supremum)</strong>이라 하고 $u = \sup S$로 표기한다.
+          <ul>
+            <li>(i) $u$는 $S$의 상계이다. (즉, 모든 $x \in S$에 대해 $x \le u$)</li>
+            <li>(ii) $v$가 $S$의 임의의 상계이면 $u \le v$이다. (가장 작은 상계)</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+
+    <div class="math-box definition">
+      <div class="box-title">정의 1.2 (실수의 완비성 공리, Completeness Axiom)</div>
+      공집합이 아닌 실수의 부분집합 $S \subset \mathbb{R}$가 위로 유계이면, $S$는 반드시 실수 범위 내에서 상한 $\sup S \in \mathbb{R}$을 가진다.
+    </div>
+
+    <h2>2. 상한의 $\varepsilon$-특성화</h2>
+    <p>실제 증명 문제에서는 상한의 정의 자체보다 아래의 '$\varepsilon$-특성화 정리'가 훨씬 자주 활용됩니다.</p>
+
+    <div class="math-box theorem">
+      <div class="box-title">정리 1.3 (상한의 $\varepsilon$-특성화)</div>
+      위로 유계인 공집합이 아닌 집합 $S \subset \mathbb{R}$의 상계 $u$에 대하여, 다음 두 명제는 동치이다.
+      $$u = \sup S \iff \forall \varepsilon > 0,\ \exists x \in S \text{ such that } u - \varepsilon < x$$
+    </div>
+
+    <div class="proof-box">
+      <span class="proof-label">증명.</span>
+      ($\Rightarrow$) $u = \sup S$라 가정하자. 임의의 $\varepsilon > 0$에 대하여 $u - \varepsilon < u$이므로, $u$가 '가장 작은 상계'라는 정의에 의해 $u - \varepsilon$은 $S$의 상계가 될 수 없다. 따라서 $u - \varepsilon < x$를 만족하는 원소 $x \in S$가 적어도 하나 존재한다.<br><br>
+      ($\Leftarrow$) $u$는 $S$의 상계이므로, $v$를 $S$의 임의의 상계라 할 때 $u \le v$임을 보이면 충분하다. 귀류법을 사용하여 $v < u$라 가정하자. $\varepsilon = u - v > 0$으로 두면 가정에 의해 다음을 만족하는 $x \in S$가 존재한다.
+      $$u - \varepsilon < x \implies u - (u - v) < x \implies v < x$$
+      이는 $v$가 $S$의 상계라는 사실에 모순이다. 따라서 $u \le v$이며, $u = \sup S$이다.
+    </div>
+
+    <div class="math-box example">
+      <div class="box-title">예제 1.4</div>
+      집합 $S = \left\{ 1 - \frac{1}{n} : n \in \mathbb{N} \right\}$의 상한이 $\sup S = 1$임을 보이시오.<br><br>
+      <strong>풀이:</strong> 모든 $n \in \mathbb{N}$에 대해 $1 - \frac{1}{n} < 1$이므로 $1$은 $S$의 상계이다. 이제 임의의 $\varepsilon > 0$을 잡자. 아르키메데스 성질에 의해 $\frac{1}{N} < \varepsilon$을 만족하는 자연수 $N \in \mathbb{N}$이 존재한다. 그러면 $x_N = 1 - \frac{1}{N} \in S$에 대하여
+      $$1 - \varepsilon < 1 - \frac{1}{N} = x_N$$
+      이 성립한다. 정리 1.3에 의해 $\sup S = 1$이다.
+    </div>
+
+    <div class="lecture-nav">
+      <span class="disabled">← 이전 강</span>
+      <a href="../index.html">목차로 돌아가기</a>
+      <span class="disabled">다음 강 →</span>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">Undergraduate Real Analysis Lecture Notes · Chapter 01</div>
+  </footer>
+</body>
+</html>
